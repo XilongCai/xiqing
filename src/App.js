@@ -25,10 +25,10 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Generate Plot</h1>
+      <h1>Hydrogen Absorption Model Plot</h1>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
-          <label htmlFor="x">Enter X Value:</label>
+          <label htmlFor="x">Enter Velocity Value:</label>
           <input
             type="text"
             id="x"
@@ -38,7 +38,7 @@ const App = () => {
           />
         </div>
         <div className="input-group">
-          <label htmlFor="y">Enter Y Value:</label>
+          <label htmlFor="y">Enter Temperature Value:</label>
           <input
             type="text"
             id="y"
@@ -49,7 +49,7 @@ const App = () => {
         </div>
         <button type="submit">Generate Plot</button>
       </form>
-      {imageSrc && <img src={imageSrc} alt="Plot" className="plot-image" />}
+      <div>{imageSrc && <img src={imageSrc} alt="Plot" className="plot-image" />}</div>
     </div>
   );
 };

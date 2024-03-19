@@ -1,25 +1,57 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [x, setX] = useState('');
+  const [y, setY] = useState('');
+  const [imageSrc, setImageSrc] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://127.0.0.1:5000/generate_plot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ x, y }),
+      });
+      const data = await response.json();
+      setImageSrc(`data:image/png;base64,${data.plotBase64}`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Generate Plot</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label htmlFor="x">Enter X Value:</label>
+          <input
+            type="text"
+            id="x"
+            value={x}
+            onChange={(e) => setX(e.target.value)}
+            required
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="y">Enter Y Value:</label>
+          <input
+            type="text"
+            id="y"
+            value={y}
+            onChange={(e) => setY(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Generate Plot</button>
+      </form>
+      {imageSrc && <img src={imageSrc} alt="Plot" className="plot-image" />}
     </div>
   );
-}
+};
 
 export default App;

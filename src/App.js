@@ -75,7 +75,7 @@ const App = () => {
         <button type="submit">Generate Plot</button>
       </form>
       <div>{imageSrc && <><img src={imageSrc} alt="Plot" className="plot-image" /><div>
-      <BlockMath math="y = \frac{K}{(1 + 4000e^{-Bx})^{0.33}}" />
+      <BlockMath math="y = \frac{K}{(1 + 4000e^{-Bx})^{0.3}}" />
       <BlockMath math="K = -572.872341576V - 0.89982819062T + 801.704037275 + 354.67789388V^2" />
       <BlockMath math="B = -0.33631875971V - 0.0559766169332T + 4.9467224951" />
       </div></>}</div>

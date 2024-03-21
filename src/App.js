@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import 'katex/dist/katex.min.css';
+import { BlockMath } from 'react-katex';
 import './App.css';
 
 const App = () => {
@@ -72,7 +74,13 @@ const App = () => {
         </div>
         <button type="submit">Generate Plot</button>
       </form>
-      <div>{imageSrc && <img src={imageSrc} alt="Plot" className="plot-image" />}</div></>) : <><h1>Hydrogen Desorption Model Plot</h1>
+      <div>{imageSrc && <><img src={imageSrc} alt="Plot" className="plot-image" /><div>
+      <BlockMath math="y = \frac{K}{(1 + 4000e^{-Bx})^{0.33}}" />
+      <BlockMath math="K = -572.872341576V - 0.89982819062T + 801.704037275 + 354.67789388V^2" />
+      <BlockMath math="B = -0.33631875971V - 0.0559766169332T + 4.9467224951" />
+      </div></>}</div>
+      
+      </>) : <><h1>Hydrogen Desorption Model Plot</h1>
       <form onSubmit={handleSubmitRelease}>
         <div className="input-group">
           <label htmlFor="x">Enter Velocity Value:</label>
@@ -96,7 +104,12 @@ const App = () => {
         </div>
         <button type="submit">Generate Plot</button>
       </form>
-      <div>{imageSrc && <img src={imageSrc} alt="Plot" className="plot-image" />}</div></>}
+      <div>{imageSrc && <><img src={imageSrc} alt="Plot" className="plot-image" /><div>
+      <BlockMath math="y = \frac{A}{1 + e^{-K(x-C)}}" />
+      <BlockMath math="A = -467.543856173V - 2.94691441564T + 897.98773058 + 153.048114948V^2" />
+      <BlockMath math="K = 0.159775370844V - 0.0970233190479T + 7.72009208192" />
+      <BlockMath math="C = 0.178672195081V - 0.0550430835279T + 4.66345107942" />
+      </div></>}</div></>}
     </div>
   );
 };

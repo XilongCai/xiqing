@@ -38,3 +38,9 @@ button:hover {
   margin-top: 20px;
   max-width: 100%;
 }
+
+
+/* Add margin-right to create a gap between buttons */
+.navbar button:first-child {
+  margin-right: 10px;
+}

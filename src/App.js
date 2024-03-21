@@ -46,7 +46,7 @@ const App = () => {
     <div className="container">
       <nav className="navbar">
         <button className={currentPage === 'generatePlot' ? 'active' : ''} onClick={() => {setCurrentPage('generatePlot'); setX(''); setY(''); setImageSrc('');}}>Absorption</button>
-        <button className={currentPage === 'generatePlotRelease' ? 'active' : ''} onClick={() => {setCurrentPage('generatePlotRelease'); setX(''); setY(''); setImageSrc('');}}>Release</button>
+        <button className={currentPage === 'generatePlotRelease' ? 'active' : ''} onClick={() => {setCurrentPage('generatePlotRelease'); setX(''); setY(''); setImageSrc('');}}>Desorption</button>
       </nav>
       {currentPage === 'generatePlot' ? (<><h1>Hydrogen Absorption Model Plot</h1>
       <form onSubmit={handleSubmit}>
@@ -72,7 +72,7 @@ const App = () => {
         </div>
         <button type="submit">Generate Plot</button>
       </form>
-      <div>{imageSrc && <img src={imageSrc} alt="Plot" className="plot-image" />}</div></>) : <><h1>Hydrogen Release Model Plot</h1>
+      <div>{imageSrc && <img src={imageSrc} alt="Plot" className="plot-image" />}</div></>) : <><h1>Hydrogen Desorption Model Plot</h1>
       <form onSubmit={handleSubmitRelease}>
         <div className="input-group">
           <label htmlFor="x">Enter Velocity Value:</label>
